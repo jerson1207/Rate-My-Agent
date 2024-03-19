@@ -26,12 +26,12 @@ def check_homepage_readability(session)
   target_text_h1 = session.find(:xpath, "/html/body/div[2]/div/div[2]/div[2]/div/div/div/div/h1").text
   expected_text_h1 = "❤️ Your Realtor: Hire the Right Real Estate Agent in 2024"
   if target_text_h1 == expected_text_h1
-    puts "Homepage readability check passed successfully."
+    puts "Home page readability check passed successfully."
   else
-    puts "Homepage readability check failed"
-    send_email("Homepage readability check failed: Expected '#{expected_text_h1}', but found '#{target_text_h1}'")
+    puts "Home page readability check failed"
+    send_email("Home page readability check failed: Expected '#{expected_text_h1}', but found '#{target_text_h1}'")
   end
-  create_log_file('Homepage readability check log', target_text_h1 == expected_text_h1)
+  create_log_file('Home page readability check log', target_text_h1 == expected_text_h1)
 end
 
 def check_button_navigation(session)
@@ -75,6 +75,7 @@ def create_log_file(test_name, result)
   File.open(file_path, 'w') do |file|
     file.puts "Test: #{test_name}"
     file.puts "Result: #{result ? 'Pass' : 'Fail'}"
+    file.puts "Time stamp: #{time_stamp}"
   end
 end
 
